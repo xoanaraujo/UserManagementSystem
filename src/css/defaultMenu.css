@@ -1,0 +1,26 @@
+.MainPane{
+    -fx-background-color: #252535;
+}
+.MainPane * {
+    -fx-text-fill: white;
+}
+
+.secPane{
+    -fx-background-color: #353550;
+    -fx-background-radius:5;
+}
+
+.tdrPane{
+    -fx-background-color: #454565;
+    -fx-background-radius:5;
+}
+
+.element{
+    -fx-background-color: #202020;
+    -fx-background-radius:5;
+}
+
+.elementDg{
+    -fx-background-color: #990000;
+    -fx-background-radius:5;
+}
