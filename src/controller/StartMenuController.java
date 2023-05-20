@@ -10,6 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import model.CreateAlert;
+import model.User;
 import model.UserData;
 
 public class StartMenuController{
@@ -42,7 +43,9 @@ public class StartMenuController{
             pos = UserData.getUserPositionByEmail(txtUser.getText());
         
         if(pos != -1){
-            if (UserData.getUsers().get(pos).getPassword().equals(txtPassword.getText())){
+            User user = UserData.getUsers().get(pos);
+            if (user.getPassword().equals(txtPassword.getText())){
+                UserData.setUser(user);
                 if(txtUser.getText().equals("admin")){
                     logAdmin(stage);
                 } else {

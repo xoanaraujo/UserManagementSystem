@@ -24,3 +24,14 @@
     -fx-background-color: #990000;
     -fx-background-radius:5;
 }
+
+.element *{
+    -fx-font-family: Consolas;
+    -fx-font-size: 14;
+}
+
+.element *{
+    -fx-font-family: Consolas;
+    -fx-font-size: 14;
+    -fx-font-weight: bold;
+}
