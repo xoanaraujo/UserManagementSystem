@@ -57,7 +57,7 @@ public class StartMenuController{
     }
 
     private void logAdmin(Stage stage){
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/AdminController.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/Admin.fxml"));
         try {
             Scene scene = new Scene(fxmlLoader.load());
             ((AdminController)fxmlLoader.getController()).init(stage);
@@ -68,7 +68,7 @@ public class StartMenuController{
     }
 
     private void logUser(Stage stage){
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/UserController.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/User.fxml"));
         try {
             Scene scene = new Scene(fxmlLoader.load());
             ((UserController)fxmlLoader.getController()).init(stage);

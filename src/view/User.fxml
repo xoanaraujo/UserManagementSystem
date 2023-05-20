@@ -10,16 +10,16 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="390.0" prefWidth="285.0" styleClass="MainPane" stylesheets="@../css/defaultMenu.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.StartMenuController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="390.0" prefWidth="285.0" styleClass="MainPane" stylesheets="@../css/defaultMenu.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UserController">
    <children>
-      <Label layoutX="14.0" layoutY="14.0" text="Welcome!">
+      <Label fx:id="lblName" layoutX="14.0" layoutY="14.0" text="Welcome!">
          <font>
             <Font name="Georgia" size="30.0" />
          </font>
       </Label>
       <Pane layoutX="15.0" layoutY="61.0" prefHeight="310.0" prefWidth="255.0" styleClass="secPane">
          <children>
-            <Button fx:id="btnRegister" layoutX="171.0" layoutY="261.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="71.0" styleClass="elementDg" text="DELETE" />
+            <Button fx:id="btnDelete" layoutX="171.0" layoutY="261.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="71.0" styleClass="elementDg" text="DELETE" />
             <GridPane layoutX="14.0" layoutY="111.0" prefHeight="116.0" prefWidth="228.0" styleClass="tdrPane">
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="159.7999755859375" minWidth="10.0" prefWidth="108.6000244140625" />
@@ -44,12 +44,12 @@
                         <Insets right="15.0" />
                      </GridPane.margin>
                   </Label>
-                  <TextField fx:id="txtPassword" styleClass="element" GridPane.columnIndex="1" GridPane.valignment="BOTTOM">
+                  <TextField fx:id="txtNewName" styleClass="element" GridPane.columnIndex="1" GridPane.valignment="BOTTOM">
                      <GridPane.margin>
                         <Insets right="15.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="txtPassword1" styleClass="element" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <TextField fx:id="txtNewEmail" styleClass="element" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets right="15.0" />
                      </GridPane.margin>
@@ -59,7 +59,7 @@
                         <Insets right="15.0" top="2.0" />
                      </GridPane.margin>
                   </Label>
-                  <TextField fx:id="txtPassword11" styleClass="element" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
+                  <TextField fx:id="ttxtNewPassword" styleClass="element" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
                      <GridPane.margin>
                         <Insets right="15.0" />
                      </GridPane.margin>
@@ -84,16 +84,16 @@
                         <Insets right="15.0" />
                      </padding>
                   </Label>
-                  <Label text="email" GridPane.columnIndex="1" />
+                  <Label fx:id="lblEmail" text="email" GridPane.columnIndex="1" />
                   <Label text="password:" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                      <GridPane.margin>
                         <Insets right="15.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label text="currentPsswd" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label fx:id="lblPassword" text="currentPsswd" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                </children>
             </GridPane>
-            <Button fx:id="btnRegister1" layoutX="92.0" layoutY="261.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="71.0" styleClass="element" text="Save" />
+            <Button fx:id="btnSave" layoutX="92.0" layoutY="261.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="71.0" styleClass="element" text="Save" />
          </children>
       </Pane>
    </children>

@@ -83,16 +83,17 @@
                         <Insets right="15.0" />
                      </GridPane.margin>
                   </TextField>
-                  <Button fx:id="btnRegister" mnemonicParsing="false" prefHeight="35.0" prefWidth="71.0" styleClass="elementDg" text="BAN" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                  <Button fx:id="btnRegister" mnemonicParsing="false" prefHeight="35.0" prefWidth="49.0" styleClass="elementDg" text="BAN" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="TOP">
                      <GridPane.margin>
                         <Insets right="15.0" />
                      </GridPane.margin>
                   </Button>
-                  <Button fx:id="btnRegister11" mnemonicParsing="false" prefHeight="35.0" prefWidth="71.0" styleClass="element" text="Show List" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                  <Button fx:id="btnRegister11" mnemonicParsing="false" prefHeight="35.0" prefWidth="81.0" styleClass="element" text="Show List" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
                      <GridPane.margin>
                         <Insets left="15.0" />
                      </GridPane.margin>
                   </Button>
+                  <Button fx:id="btnRegister2" mnemonicParsing="false" prefHeight="35.0" prefWidth="62.0" styleClass="elementDg" text="UNBAN" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP" />
                </children>
             </GridPane>
          </children>
