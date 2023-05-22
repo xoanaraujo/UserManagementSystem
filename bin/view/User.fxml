@@ -10,17 +10,17 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="390.0" prefWidth="285.0" styleClass="MainPane" stylesheets="@../css/defaultMenu.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UserController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="MainPane" stylesheets="@../css/defaultMenu.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UserController">
    <children>
-      <Label fx:id="lblName" layoutX="14.0" layoutY="14.0" text="Welcome!">
+      <Label fx:id="lblName" alignment="CENTER" contentDisplay="CENTER" layoutX="234.0" layoutY="14.0" text="Welcome!">
          <font>
             <Font name="Georgia" size="30.0" />
          </font>
       </Label>
-      <Pane layoutX="15.0" layoutY="61.0" prefHeight="310.0" prefWidth="255.0" styleClass="secPane">
+      <Pane layoutX="151.0" layoutY="62.0" prefHeight="310.0" prefWidth="300.0" styleClass="secPane">
          <children>
-            <Button fx:id="btnDelete" layoutX="171.0" layoutY="261.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="71.0" styleClass="elementDg" text="DELETE" />
-            <GridPane layoutX="14.0" layoutY="111.0" prefHeight="116.0" prefWidth="228.0" styleClass="tdrPane">
+            <Button fx:id="btnDelete" layoutX="213.0" layoutY="261.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="71.0" styleClass="elementDg" text="DELETE" />
+            <GridPane layoutX="14.0" layoutY="111.0" prefHeight="116.0" prefWidth="270.0" styleClass="tdrPane">
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="159.7999755859375" minWidth="10.0" prefWidth="108.6000244140625" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="169.40000000000003" minWidth="10.0" prefWidth="118.99997558593752" />
@@ -66,7 +66,7 @@
                   </TextField>
                </children>
             </GridPane>
-            <GridPane layoutX="14.0" layoutY="14.0" prefHeight="81.0" prefWidth="228.0" styleClass="tdrPane">
+            <GridPane layoutX="14.0" layoutY="14.0" prefHeight="81.0" prefWidth="270.0" styleClass="tdrPane">
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="159.7999755859375" minWidth="10.0" prefWidth="108.6000244140625" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="169.40000000000003" minWidth="10.0" prefWidth="118.99997558593752" />
@@ -93,8 +93,9 @@
                   <Label fx:id="lblPassword" text="currentPsswd" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                </children>
             </GridPane>
-            <Button fx:id="btnSave" layoutX="92.0" layoutY="261.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="71.0" styleClass="element" text="Save" />
+            <Button fx:id="btnSave" layoutX="125.0" layoutY="261.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="71.0" styleClass="element" text="Save" />
          </children>
       </Pane>
+      <Button fx:id="btnSave1" layoutX="15.0" layoutY="15.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="81.0" styleClass="element" text="Log Out" />
    </children>
 </Pane>
