@@ -17,7 +17,7 @@
             <Font name="Georgia" size="30.0" />
          </font>
       </Label>
-      <Pane layoutX="186.0" layoutY="155.0" prefHeight="159.0" prefWidth="228.0" styleClass="secPane">
+      <Pane layoutX="186.0" layoutY="155.0" prefHeight="154.0" prefWidth="228.0" styleClass="secPane">
          <children>
             <GridPane layoutY="15.0" prefHeight="87.0" prefWidth="228.0">
                <columnConstraints>
@@ -71,7 +71,7 @@
                   </TextField>
                </children>
             </GridPane>
-            <Button fx:id="btnRegister" layoutX="13.0" layoutY="105.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="202.0" styleClass="element" text="Register" />
+            <Button fx:id="btnRegister" layoutX="13.0" layoutY="103.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="202.0" styleClass="element" text="Register" />
          </children>
       </Pane>
       <Button fx:id="btnBack" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="54.0" styleClass="element" text="&lt;-" />
