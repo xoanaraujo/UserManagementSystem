@@ -11,7 +11,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import model.CreateAlert;
 import model.User;
-import model.UserData;
+import model.AppData;
 
 public class StartMenuController{
 
@@ -20,6 +20,7 @@ public class StartMenuController{
 
     
     public void init(Stage stage) {
+        AppData.setUser(null);
         btnRegister.setOnAction(e -> register(stage));
         btnLogin.setOnAction(e -> login(stage));
     }
@@ -37,15 +38,15 @@ public class StartMenuController{
 
     private void login(Stage stage){
         int pos = -1;
-        if(!UserData.isTextFieldAnEmail(txtUser))
-            pos = UserData.getUserPositionByName(txtUser.getText());
+        if(!AppData.isTextFieldAnEmail(txtUser))
+            pos = AppData.getUserPositionByName(txtUser.getText());
         else 
-            pos = UserData.getUserPositionByEmail(txtUser.getText());
+            pos = AppData.getUserPositionByEmail(txtUser.getText());
         
         if(pos != -1){
-            User user = UserData.getUsers().get(pos);
+            User user = AppData.getUsers().get(pos);
             if (user.getPassword().equals(txtPassword.getText())){
-                UserData.setUser(user);
+                AppData.setUser(user);
                 if(txtUser.getText().equals("admin")){
                     logAdmin(stage);
                 } else {

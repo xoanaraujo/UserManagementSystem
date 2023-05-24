@@ -11,7 +11,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import model.CreateAlert;
 import model.User;
-import model.UserData;
+import model.AppData;
 
 public class RegisterMenuController {
     
@@ -38,11 +38,11 @@ public class RegisterMenuController {
 
     private void register(Stage stage){
         if(!isDataEmpty()){
-            if(UserData.isTextFieldAnEmail(txtEmail)){
-                if(UserData.getUserPositionByName(txtUser.getText()) == -1){
-                    if (UserData.getUserPositionByEmail(txtEmail.getText()) == -1){
-                        UserData.getUsers().add(new User(txtUser.getText(), txtEmail.getText(), txtPassword.getText()));
-                        UserData.saveDataFile();
+            if(AppData.isTextFieldAnEmail(txtEmail)){
+                if(AppData.getUserPositionByName(txtUser.getText()) == -1){
+                    if (AppData.getUserPositionByEmail(txtEmail.getText()) == -1){
+                        AppData.getUsers().add(new User(txtUser.getText(), txtEmail.getText(), txtPassword.getText()));
+                        AppData.saveDataFile();
                         CreateAlert.newAlert(AlertType.INFORMATION, "User successfully registered");
                         loadStartMenu(stage);
                     } else {

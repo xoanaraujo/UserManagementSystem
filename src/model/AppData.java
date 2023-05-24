@@ -10,7 +10,7 @@ import java.util.Iterator;
 
 import javafx.scene.control.TextField;
 
-public class UserData {
+public class AppData {
 
     private static ArrayList<User> users;
     private static User user;
@@ -20,14 +20,14 @@ public class UserData {
             loadDataFile();
         } else {
             createDataFile();
+            loadDataFile();
         }
     }
 
     private static void createDataFile(){
         users = new ArrayList<>();
-        users.add(new User("admin", "abc123", "admin@example.com"));
+        users.add(new User("admin", "admin@example.com", "abc123"));
         saveDataFile();
-        loadDataFile();
     }
 
     private static void loadDataFile(){
@@ -50,12 +50,10 @@ public class UserData {
 
     public static int getUserPositionByName(String name){
         int index = 0, pos = -1;
-        boolean located = false;
         Iterator<User> it = users.iterator();
-        while(it.hasNext() && !located){
+        while(it.hasNext() && pos != index){
             if(it.next().getName().equals(name)){
-                pos = index;
-                located = true;    
+                pos = index; 
             } else{
                 index++;
             }
@@ -65,12 +63,10 @@ public class UserData {
 
     public static int getUserPositionByEmail(String email){
         int index = 0, pos = -1;
-        boolean located = false;
         Iterator<User> it = users.iterator();
-        while(it.hasNext() && !located){
+        while(it.hasNext() && pos != index){
             if(it.next().getEmail().equals(email)){
-                pos = index;
-                located = true;    
+                pos = index;  
             } else{
                 index++;
             }
@@ -112,7 +108,7 @@ public class UserData {
     }
 
     public static void setUser(User user) {
-        UserData.user = user;
+        AppData.user = user;
     }
 
     public static ArrayList<User> getUsers() {

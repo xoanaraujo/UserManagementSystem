@@ -96,6 +96,6 @@
             <Button fx:id="btnSave" layoutX="125.0" layoutY="261.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="71.0" styleClass="element" text="Save" />
          </children>
       </Pane>
-      <Button fx:id="btnSave1" layoutX="14.0" layoutY="337.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="81.0" styleClass="element" text="Log Out" />
+      <Button fx:id="btnLogOut" layoutX="14.0" layoutY="337.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="81.0" styleClass="element" text="Log Out" />
    </children>
 </Pane>

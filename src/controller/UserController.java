@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,12 +15,12 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import model.CreateAlert;
 import model.User;
-import model.UserData;
+import model.AppData;
 
 public class UserController {
 
     @FXML
-    private Button btnDelete, btnSave;
+    private Button btnDelete, btnSave, btnLogOut;
 
     @FXML
     private Label lblEmail, lblName, lblPassword;
@@ -27,20 +28,23 @@ public class UserController {
     @FXML private TextField txtNewPassword, txtNewEmail, txtNewName;
 
     public void init(Stage stage){
-        User user = UserData.getUser();
+        User user = AppData.getUser();
+        user.setLastLoginDateTime(LocalDateTime.now());
+        
         lblName.setText(user.getName());
         lblEmail.setText(user.getEmail());
         lblPassword.setText(user.getPassword());
 
         btnSave.setOnAction(e -> changeData(user));
         btnDelete.setOnAction(e -> deleteData(user,stage));
+        btnLogOut.setOnAction(e -> loadStartMenu(stage));
     }
 
     private void deleteData(User user, Stage stage){
         Alert alert = new Alert(AlertType.CONFIRMATION, "DELETE account? This change cannot be undone");
         alert.showAndWait();
         if(alert.getResult() == ButtonType.OK){
-            UserData.getUsers().remove(user);
+            AppData.getUsers().remove(user);
             CreateAlert.newAlert(AlertType.INFORMATION, "The user has been removed successfully");
             loadStartMenu(stage);
         }
@@ -48,28 +52,36 @@ public class UserController {
 
     private void changeData(User user){
         if (!isDataEmpty()){
-            int pos;
-            pos = UserData.getUserPositionByName(txtNewName.getText());
-            if (pos == -1){
-                pos = UserData.getUserPositionByEmail(txtNewEmail.getText());
+            if(txtNewEmail.getText() != "" && !AppData.isTextFieldAnEmail(txtNewEmail)){
+                CreateAlert.newAlert(AlertType.ERROR, "Email must be valid");
+            } else  {
+                int pos;
+                pos = AppData.getUserPositionByName(txtNewName.getText());
                 if (pos == -1){
-                    if(txtNewName.getText() != "")
-                        user.setName(txtNewName.getText());
-                    if(txtNewEmail.getText() != "")
-                        if(UserData.isTextFieldAnEmail(txtNewEmail))
+                    pos = AppData.getUserPositionByEmail(txtNewEmail.getText());
+                    if (pos == -1){
+                        
+                        if(txtNewName.getText() != "")
+                            user.setName(txtNewName.getText());
+                        if(txtNewEmail.getText() != "")
                             user.setEmail(txtNewEmail.getText());
-                    if(txtNewPassword.getText() != "")
-                        user.setPassword(txtNewPassword.getText());
-                    UserData.saveDataFile();
-                    CreateAlert.newAlert(AlertType.INFORMATION, "Changes saved successfully");
-                    lblName.setText(user.getName());
-                    lblEmail.setText(user.getEmail());
-                    lblPassword.setText(user.getPassword());
+                        if(txtNewPassword.getText() != "")
+                            user.setPassword(txtNewPassword.getText());
+                        AppData.saveDataFile();
+                        CreateAlert.newAlert(AlertType.INFORMATION, "Changes saved successfully");
+
+                        lblName.setText(user.getName());
+                        lblEmail.setText(user.getEmail());
+                        lblPassword.setText(user.getPassword());
+                        txtNewName.setText("");
+                        txtNewEmail.setText("");
+                        txtNewPassword.setText("");
+                    } else {
+                        CreateAlert.newAlert(AlertType.ERROR, "Email already taken");
+                    }
                 } else {
-                    CreateAlert.newAlert(AlertType.ERROR, "Email already taken");
+                    CreateAlert.newAlert(AlertType.ERROR, "Username already taken");
                 }
-            } else {
-                CreateAlert.newAlert(AlertType.ERROR, "Username already taken");
             }
         }
     }
@@ -87,6 +99,5 @@ public class UserController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        
     }
 }

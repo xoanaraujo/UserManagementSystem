@@ -33,3 +33,14 @@
     -fx-font-size: 14;
     -fx-font-weight: bold;
 }
+
+.listView{
+    -fx-background-color: #454565;
+    -fx-background-radius:5;
+    -fx-font-family: Consolas;
+    -fx-font-size: 14;
+}
+
+.listView *{
+    -fx-text-fill: black;
+}
