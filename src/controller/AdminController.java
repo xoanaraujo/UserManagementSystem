@@ -23,7 +23,7 @@ import model.CreateAlert;
 public class AdminController {
 
     @FXML
-    private Button btnBan, btnDelete, btnLogOut, btnSave, btnUnban, btnExport;
+    private Button btnBan, btnDelete, btnLogOut, btnSave, btnExport;
 
     @FXML
     private Label lblPassword;
@@ -38,12 +38,13 @@ public class AdminController {
 
         updateList();
 
+        listViewUsers.setOnMouseClicked(e -> handlelistViewOnMouseClicked());
+
         btnSave.setOnAction(e -> changeData(user));
         btnDelete.setOnAction(e -> deleteUser(listViewUsers.getSelectionModel().getSelectedItem()));
         btnLogOut.setOnAction(e -> loadStartMenu(stage));
         btnExport.setOnAction(e -> exportToCsv());
         btnBan.setOnAction(e -> banUser(listViewUsers.getSelectionModel().getSelectedItem()));
-        btnUnban.setOnAction(e -> unbanUser(listViewUsers.getSelectionModel().getSelectedItem()));
     }
 
     private void exportToCsv() {
@@ -74,30 +75,59 @@ public class AdminController {
 
     private void banUser(User user){
         if (user != null){
-            user.setBanned(true);
-            AppData.saveDataFile();
-            updateList();
+            if (!user.getName().equals("admin")){
+                if (user.isBanned())
+                user.setBanned(false);
+                else
+                    user.setBanned(true);
+                AppData.saveDataFile();
+                updateList();
+            } else {
+                CreateAlert.newAlert(AlertType.ERROR, "Admin cannot be banned");
+            }
         } else {
             CreateAlert.newAlert(AlertType.ERROR, "User not selected");
         }
-    }
-    private void unbanUser(User user){
-        if (user != null){
-            user.setBanned(false);
-            AppData.saveDataFile();
-            updateList();
-        } else {
-            CreateAlert.newAlert(AlertType.ERROR, "User not selected");
-        }
+        setCssToDefault();
     }
 
     private void deleteUser(User user){
-        AppData.getUsers().remove(user);
-        AppData.saveDataFile();
+        if (user != null) {
+            if (!user.getName().equals("admin")){
+                AppData.getUsers().remove(user);
+                AppData.saveDataFile();
+                updateList();
+            } else {
+                CreateAlert.newAlert(AlertType.ERROR, "Admin cannot be removed");
+            }
+        } else {
+            CreateAlert.newAlert(AlertType.ERROR, "User not selected");
+        }
+        setCssToDefault();
     }
 
     private void updateList(){
         listViewUsers.getItems().setAll(AppData.getUsers());
+    }
+
+    private void handlelistViewOnMouseClicked(){
+        btnDelete.setText("DELETE");
+        btnDelete.setStyle("-fx-background-color: #990000");
+        
+        if (listViewUsers.getSelectionModel().getSelectedItem().isBanned()){
+            btnBan.setText("UNBAN");
+            btnBan.setStyle("-fx-background-color: #059900");
+        } else {
+            btnBan.setText("BAN");
+            btnBan.setStyle("-fx-background-color: #990000");
+        }
+    }
+
+    private void setCssToDefault(){
+        btnBan.setText("");
+        btnBan.setStyle("-fx-background-color: #202020");
+        btnDelete.setText("");
+        btnDelete.setStyle("-fx-background-color: #202020");
     }
 
     private void loadStartMenu(Stage stage){

@@ -63,11 +63,11 @@ public class User implements Serializable{
     }
     
     public String toCsv(){
-        return (isBanned ? "[BANNED], " : "") + name + "," + email + "," + regisLocalDateTime + ", " + lastLoginDateTime;
+        return (isBanned ? "[BANNED], " : "[OK], ") + name + "," + email + "," + regisLocalDateTime + ", " + lastLoginDateTime;
     }
     @Override
     public String toString(){
-        return (isBanned ? "[BANNED], " : "") + name + "," + email + "," + regisLocalDateTime + ", " + lastLoginDateTime;
+        return (isBanned ? "[BANNED], " : "[OK], ") + name + "," + email + "," + regisLocalDateTime + ", " + lastLoginDateTime;
     }
     
     @Override
