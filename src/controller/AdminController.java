@@ -5,12 +5,15 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Comparator;
 
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
@@ -22,27 +25,31 @@ import model.CreateAlert;
 
 public class AdminController {
 
-    @FXML
-    private Button btnBan, btnDelete, btnLogOut, btnSave, btnExport;
+    private enum OrderBy {
+        REGISTER_DATE, NAME
+    }
 
-    @FXML
-    private Label lblPassword;
-
+    @FXML private Button btnBan, btnDelete, btnLogOut, btnSave, btnExport;
+    @FXML private Label lblPassword;
     @FXML private TextField txtPassword;
     @FXML private ListView<User> listViewUsers;
+    @FXML private ComboBox<OrderBy> cmbOrderBy;
 
     public void init(Stage stage){
         User user = AppData.getUser();
         user.setLastLoginDateTime(LocalDateTime.now());
         lblPassword.setText(user.getPassword());
+        cmbOrderBy.getItems().addAll(OrderBy.values());
 
         updateList();
 
         listViewUsers.setOnMouseClicked(e -> handlelistViewOnMouseClicked());
 
+        cmbOrderBy.setOnAction(e -> orderList());
+
+        btnLogOut.setOnAction(e -> loadStartMenu(stage));
         btnSave.setOnAction(e -> changeData(user));
         btnDelete.setOnAction(e -> deleteUser(listViewUsers.getSelectionModel().getSelectedItem()));
-        btnLogOut.setOnAction(e -> loadStartMenu(stage));
         btnExport.setOnAction(e -> exportToCsv());
         btnBan.setOnAction(e -> banUser(listViewUsers.getSelectionModel().getSelectedItem()));
     }
@@ -130,6 +137,14 @@ public class AdminController {
         btnDelete.setStyle("-fx-background-color: #202020");
     }
 
+    private void orderList(){
+        switch(cmbOrderBy.getSelectionModel().getSelectedItem()){
+            case REGISTER_DATE: AppData.getUsers().sort(compByRegisDate); break;
+            case NAME: AppData.getUsers().sort(compByName); break;
+        }
+        updateList();
+    }
+
     private void loadStartMenu(Stage stage){
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/StartMenu.fxml"));
         try {
@@ -141,4 +156,15 @@ public class AdminController {
         }
         
     }
+    private Comparator<User> compByName = new Comparator<>(){
+        public int compare(User u1, User u2){
+            return u1.getName().compareTo(u2.getName());
+        }
+    };
+
+    private Comparator<User> compByRegisDate = new Comparator<>(){
+        public int compare(User u1, User u2){
+            return u1.getRegisLocalDateTime().compareTo(u2.getRegisLocalDateTime());
+        }
+    };
 }

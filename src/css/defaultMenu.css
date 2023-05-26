@@ -19,19 +19,43 @@
     -fx-font-size: 14;
 }
 
-.element{
+.txtField{
     -fx-background-color: #202020;
     -fx-background-radius:5;
     -fx-font-family: Consolas;
     -fx-font-size: 14;
 }
 
-.elementDg{
+.btn{
+    -fx-background-color: #202020;
+    -fx-background-radius:5;
+    -fx-font-family: Consolas;
+    -fx-font-size: 14;
+}
+
+.btnDg{
     -fx-background-color: #990000;
     -fx-background-radius:5;
     -fx-font-family: Consolas;
     -fx-font-size: 14;
     -fx-font-weight: bold;
+}
+
+.btn:hover {
+    -fx-border-color: white;
+    -fx-border-radius:5;
+    -fx-border-width: 2px;
+}
+.btn:focus{
+    -fx-border-color: white;
+    -fx-border-radius:5;
+    -fx-border-width: 2px;
+}
+
+.btnDg:hover {
+    -fx-border-color: white;
+    -fx-border-radius:5;
+    -fx-border-width: 2px;
 }
 
 .listView{
@@ -43,4 +67,14 @@
 
 .listView *{
     -fx-text-fill: black;
+}
+
+.cmb {
+    -fx-background-color: #202020;
+    -fx-font-family: Consolas;
+    -fx-font-size: 14;
+}
+
+.cmb *{
+    -fx-background-color: #202020;
 }
