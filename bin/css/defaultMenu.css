@@ -25,6 +25,15 @@
     -fx-font-family: Consolas;
     -fx-font-size: 14;
 }
+.txtField:hover{
+    -fx-border-color: white;
+    -fx-border-radius:5;
+    -fx-border-width: 2px;
+}
+
+.txtField:focused{
+    -fx-background-color: #3a3a3a;
+}
 
 .btn{
     -fx-background-color: #202020;
@@ -44,19 +53,26 @@
 .btn:hover {
     -fx-border-color: white;
     -fx-border-radius:5;
-    -fx-border-width: 2px;
+    -fx-border-width: 1px;
 }
-.btn:focus{
+.btn:focused{
     -fx-border-color: white;
     -fx-border-radius:5;
-    -fx-border-width: 2px;
+    -fx-border-width: 1px;
 }
 
 .btnDg:hover {
     -fx-border-color: white;
     -fx-border-radius:5;
-    -fx-border-width: 2px;
+    -fx-border-width: 1px;
 }
+
+.btnDg:focused{
+    -fx-border-color: white;
+    -fx-border-radius:5;
+    -fx-border-width: 1px;
+}
+
 
 .listView{
     -fx-background-color: #454565;
@@ -66,7 +82,18 @@
 }
 
 .listView *{
-    -fx-text-fill: black;
+    -fx-background-radius:5;
+    -fx-background-color: #202020;
+}
+
+.listView *:hover {
+    -fx-border-color: white;
+    -fx-border-width: 1px;
+}
+.listView *:focused{
+    -fx-border-color: white;
+    -fx-border-radius:5;
+    -fx-border-width: 1px;
 }
 
 .cmb {
@@ -77,4 +104,8 @@
 
 .cmb *{
     -fx-background-color: #202020;
+}
+
+.date *{
+    -fx-text-fill: black;
 }

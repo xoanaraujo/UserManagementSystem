@@ -20,7 +20,7 @@ import model.AppData;
 public class UserController {
 
     @FXML
-    private Button btnDelete, btnSave, btnLogOut;
+    private Button btnDelete, btnSave, btnLogOut, btnCreateActivity;
 
     @FXML
     private Label lblEmail, lblName, lblPassword;
@@ -38,6 +38,7 @@ public class UserController {
         btnSave.setOnAction(e -> changeData(user));
         btnDelete.setOnAction(e -> deleteData(user,stage));
         btnLogOut.setOnAction(e -> loadStartMenu(stage));
+        btnCreateActivity.setOnAction(e -> loadCreateActivity(stage));
     }
 
     private void deleteData(User user, Stage stage){
@@ -95,6 +96,17 @@ public class UserController {
         try {
             Scene scene = new Scene(fxmlLoader.load());{}
             ((StartMenuController)fxmlLoader.getController()).init(stage);
+            stage.setScene(scene);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void loadCreateActivity(Stage stage){
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/CreateActivityMenu.fxml"));
+        try {
+            Scene scene = new Scene(fxmlLoader.load());{}
+            ((CreateActivityController)fxmlLoader.getController()).init(stage);
             stage.setScene(scene);
         } catch (IOException e) {
             e.printStackTrace();

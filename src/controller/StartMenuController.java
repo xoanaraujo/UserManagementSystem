@@ -1,6 +1,9 @@
 package controller;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDateTime;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -46,6 +49,7 @@ public class StartMenuController{
         if(pos != -1){
             User user = AppData.getUsers().get(pos);
             if (user.getPassword().equals(txtPassword.getText())){
+                regisLogDateTime(user.getName(), true);
                 AppData.setUser(user);
                 if(txtUser.getText().equals("admin")){
                     logAdmin(stage);
@@ -53,6 +57,7 @@ public class StartMenuController{
                     logUser(stage);
                 }
             } else {
+                regisLogDateTime(user.getName(), false);
                 CreateAlert.newAlert(AlertType.ERROR, "User/password incorrect");
             }
         } else {
@@ -79,6 +84,15 @@ public class StartMenuController{
             stage.setScene(scene);
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    private void regisLogDateTime(String name, boolean isPasswordOk){
+        try(BufferedWriter out = new BufferedWriter(new FileWriter("access.log", true))){
+            out.newLine();
+            out.write(LocalDateTime.now() + " " + (isPasswordOk ? "OK " : "ERROR ") + name);
+        } catch(IOException e1){
+            e1.printStackTrace();
         }
     }
 }

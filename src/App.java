@@ -1,4 +1,7 @@
 import controller.StartMenuController;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -6,6 +9,7 @@ import javafx.stage.Stage;
 import model.AppData;
 
 public class App extends Application{
+
     public static void main(String[] args) throws Exception {
         launch(args);
         System.out.println(AppData.getUsers().get(0).getName() + " " + AppData.getUsers().get(0).getPassword());

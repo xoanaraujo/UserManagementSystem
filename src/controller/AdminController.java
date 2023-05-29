@@ -18,6 +18,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import model.User;
 import model.AppData;
@@ -55,7 +56,8 @@ public class AdminController {
     }
 
     private void exportToCsv() {
-        File file = new File("usuarios.csv");
+        FileChooser fileChooser = new FileChooser();
+        File file = fileChooser.showSaveDialog(null);
         try(BufferedWriter ficheroSalida = new BufferedWriter(new FileWriter(file))){
             for (int i = 0; i < AppData.getUsers().size(); i++) {
                 ficheroSalida.write(AppData.getUsers().get(i).toCsv());
@@ -118,15 +120,19 @@ public class AdminController {
     }
 
     private void handlelistViewOnMouseClicked(){
-        btnDelete.setText("DELETE");
-        btnDelete.setStyle("-fx-background-color: #990000");
-        
-        if (listViewUsers.getSelectionModel().getSelectedItem().isBanned()){
-            btnBan.setText("UNBAN");
-            btnBan.setStyle("-fx-background-color: #059900");
-        } else {
-            btnBan.setText("BAN");
-            btnBan.setStyle("-fx-background-color: #990000");
+        User user = listViewUsers.getSelectionModel().getSelectedItem();
+
+        if (user != null){
+            btnDelete.setText("DELETE");
+            btnDelete.setStyle("-fx-background-color: #990000");
+            
+            if (user.isBanned()){
+                btnBan.setText("UNBAN");
+                btnBan.setStyle("-fx-background-color: #059900");
+            } else {
+                btnBan.setText("BAN");
+                btnBan.setStyle("-fx-background-color: #990000");
+            }
         }
     }
 

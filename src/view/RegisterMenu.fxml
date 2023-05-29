@@ -46,7 +46,7 @@
                         <Font name="Consolas" size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtUser" styleClass="element" GridPane.columnIndex="1">
+                  <TextField fx:id="txtUser" styleClass="txtField" GridPane.columnIndex="1">
                      <GridPane.margin>
                         <Insets right="15.0" />
                      </GridPane.margin>
@@ -59,21 +59,21 @@
                         <Font name="Consolas" size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtEmail" styleClass="element" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <TextField fx:id="txtEmail" styleClass="txtField" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets right="15.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="txtPassword" styleClass="element" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <TextField fx:id="txtPassword" styleClass="txtField" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <GridPane.margin>
                         <Insets right="15.0" />
                      </GridPane.margin>
                   </TextField>
                </children>
             </GridPane>
-            <Button fx:id="btnRegister" layoutX="13.0" layoutY="103.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="202.0" styleClass="element" text="Register" />
+            <Button fx:id="btnRegister" layoutX="13.0" layoutY="103.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="202.0" styleClass="btn" text="Register" />
          </children>
       </Pane>
-      <Button fx:id="btnBack" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="54.0" styleClass="element" text="&lt;-" />
+      <Button fx:id="btnBack" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="54.0" styleClass="btn" text="&lt;-" />
    </children>
 </Pane>

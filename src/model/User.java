@@ -2,13 +2,19 @@ package model;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
 public class User implements Serializable{
+
     private String name;
-    private String password;
     private String email;
+    private String password;
     private LocalDateTime regisLocalDateTime, lastLoginDateTime;
     private boolean isBanned;
+    private ArrayList<Activity> activities;
     
     public User(String name, String email, String password) {
         this.name = name;
@@ -16,6 +22,7 @@ public class User implements Serializable{
         this.email = email;
         regisLocalDateTime = LocalDateTime.now();
         this.isBanned = false;
+        this.activities = new ArrayList<>();
     }
     
     public void setName(String name) {
@@ -99,6 +106,10 @@ public class User implements Serializable{
         } else if (!email.equals(other.email))
             return false;
         return true;
+    }
+
+    public ArrayList<Activity> getActivities() {
+        return activities;
     }
 
     
