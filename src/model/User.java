@@ -5,24 +5,31 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
+@Entity
 public class User implements Serializable{
-
+    @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    private int id;
     private String name;
     private String email;
     private String password;
     private LocalDateTime regisLocalDateTime, lastLoginDateTime;
     private boolean isBanned;
-    private ArrayList<Activity> activities;
     
+    public User(){
+        
+    }
+
     public User(String name, String email, String password) {
         this.name = name;
         this.password = password;
         this.email = email;
         regisLocalDateTime = LocalDateTime.now();
         this.isBanned = false;
-        this.activities = new ArrayList<>();
     }
     
     public void setName(String name) {
@@ -107,10 +114,4 @@ public class User implements Serializable{
             return false;
         return true;
     }
-
-    public ArrayList<Activity> getActivities() {
-        return activities;
-    }
-
-    
 }

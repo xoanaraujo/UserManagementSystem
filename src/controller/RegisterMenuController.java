@@ -41,8 +41,11 @@ public class RegisterMenuController {
             if(AppData.isTextFieldAnEmail(txtEmail)){
                 if(AppData.getUserPositionByName(txtUser.getText()) == -1){
                     if (AppData.getUserPositionByEmail(txtEmail.getText()) == -1){
-                        AppData.getUsers().add(new User(txtUser.getText(), txtEmail.getText(), txtPassword.getText()));
-                        AppData.saveDataFile();
+                        User user = new User(txtUser.getText(), txtEmail.getText(), txtPassword.getText());
+                        AppData.getUsers().add(user);
+                        //AppData.saveUsersDataFile();
+                        AppData.saveUsersDataFileSQL(user);
+                        AppData.loadUsersDataFileSQL();
                         CreateAlert.newAlert(AlertType.INFORMATION, "User successfully registered");
                         loadStartMenu(stage);
                     } else {

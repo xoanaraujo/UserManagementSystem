@@ -72,7 +72,7 @@ public class AdminController {
     private void changeData(User user){
         if (txtPassword.getText() != ""){
             user.setPassword(txtPassword.getText());
-            AppData.saveDataFile();
+            AppData.saveUsersDataFile();
             CreateAlert.newAlert(AlertType.INFORMATION, "Changes saved successfully");
 
             lblPassword.setText(user.getPassword());
@@ -89,7 +89,7 @@ public class AdminController {
                 user.setBanned(false);
                 else
                     user.setBanned(true);
-                AppData.saveDataFile();
+                AppData.saveUsersDataFile();
                 updateList();
             } else {
                 CreateAlert.newAlert(AlertType.ERROR, "Admin cannot be banned");
@@ -104,7 +104,7 @@ public class AdminController {
         if (user != null) {
             if (!user.getName().equals("admin")){
                 AppData.getUsers().remove(user);
-                AppData.saveDataFile();
+                AppData.saveUsersDataFile();
                 updateList();
             } else {
                 CreateAlert.newAlert(AlertType.ERROR, "Admin cannot be removed");

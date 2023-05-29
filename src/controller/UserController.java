@@ -3,6 +3,8 @@ package controller;
 import java.io.IOException;
 import java.time.LocalDateTime;
 
+import app.App;
+import jakarta.persistence.EntityTransaction;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -20,7 +22,7 @@ import model.AppData;
 public class UserController {
 
     @FXML
-    private Button btnDelete, btnSave, btnLogOut, btnCreateActivity;
+    private Button btnDelete, btnSave, btnLogOut, btnCreateActivity, btnActivityList;
 
     @FXML
     private Label lblEmail, lblName, lblPassword;
@@ -39,13 +41,18 @@ public class UserController {
         btnDelete.setOnAction(e -> deleteData(user,stage));
         btnLogOut.setOnAction(e -> loadStartMenu(stage));
         btnCreateActivity.setOnAction(e -> loadCreateActivity(stage));
+        btnActivityList.setOnAction(e -> loadActivityList(stage));
     }
 
     private void deleteData(User user, Stage stage){
         Alert alert = new Alert(AlertType.CONFIRMATION, "DELETE account? This change cannot be undone");
         alert.showAndWait();
         if(alert.getResult() == ButtonType.OK){
-            AppData.getUsers().remove(user);
+            EntityTransaction tx = App.em.getTransaction();
+            tx.begin();
+            App.em.remove(user);
+            tx.commit();
+            AppData.loadUsersDataFileSQL();
             CreateAlert.newAlert(AlertType.INFORMATION, "The user has been removed successfully");
             loadStartMenu(stage);
         }
@@ -61,16 +68,18 @@ public class UserController {
                 if (pos == -1){
                     pos = AppData.getUserPositionByEmail(txtNewEmail.getText());
                     if (pos == -1){
-                        
+                        EntityTransaction tx = App.em.getTransaction();
+                        tx.begin();
                         if(txtNewName.getText() != "")
                             user.setName(txtNewName.getText());
                         if(txtNewEmail.getText() != "")
                             user.setEmail(txtNewEmail.getText());
                         if(txtNewPassword.getText() != "")
                             user.setPassword(txtNewPassword.getText());
-                        AppData.saveDataFile();
+                        //AppData.saveUsersDataFile();
+                        tx.commit();
+                        AppData.loadUsersDataFileSQL();
                         CreateAlert.newAlert(AlertType.INFORMATION, "Changes saved successfully");
-
                         lblName.setText(user.getName());
                         lblEmail.setText(user.getEmail());
                         lblPassword.setText(user.getPassword());
@@ -105,8 +114,19 @@ public class UserController {
     private void loadCreateActivity(Stage stage){
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/CreateActivityMenu.fxml"));
         try {
-            Scene scene = new Scene(fxmlLoader.load());{}
+            Scene scene = new Scene(fxmlLoader.load());
             ((CreateActivityController)fxmlLoader.getController()).init(stage);
+            stage.setScene(scene);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void loadActivityList(Stage stage){
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/ActivityList.fxml"));
+        try {
+            Scene scene = new Scene(fxmlLoader.load());
+            ((ActivityListController)fxmlLoader.getController()).init(stage);
             stage.setScene(scene);
         } catch (IOException e) {
             e.printStackTrace();

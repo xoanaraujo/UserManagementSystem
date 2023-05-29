@@ -20,12 +20,6 @@
       </Label>
       <Pane layoutX="14.0" layoutY="64.0" prefHeight="322.0" prefWidth="573.0" styleClass="secPane">
          <children>
-            <Button fx:id="btnCreate" layoutX="422.0" layoutY="273.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="137.0" styleClass="btn" text="Create Activity">
-               <font>
-                  <Font name="Consolas" size="12.0" />
-               </font>
-            </Button>
-            <Button fx:id="btnClose" layoutX="13.0" layoutY="273.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="84.0" styleClass="btn" text="Close" />
             <GridPane layoutX="14.0" layoutY="14.0" prefHeight="180.0" prefWidth="543.0" styleClass="tdrPane">
               <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -75,22 +69,27 @@
                         <Insets right="15.0" />
                      </GridPane.margin>
                   </Label>
-                  <TextField fx:id="txtMax" styleClass="txtField" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                     <GridPane.margin>
-                        <Insets right="15.0" />
-                     </GridPane.margin>
-                  </TextField>
                   <TextField fx:id="txtTitle" styleClass="txtField" GridPane.columnIndex="1">
                      <GridPane.margin>
                         <Insets right="15.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="txtHourStart" styleClass="txtField" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <TextField fx:id="txtDescription" styleClass="txtField" GridPane.columnIndex="3">
                      <GridPane.margin>
                         <Insets right="15.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="txtPlace" styleClass="txtField" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                  <DatePicker fx:id="dateStart" styleClass="date" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets right="15.0" />
+                     </GridPane.margin>
+                  </DatePicker>
+                  <DatePicker fx:id="dateEnd" styleClass="date" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets right="15.0" />
+                     </GridPane.margin>
+                  </DatePicker>
+                  <TextField fx:id="txtHourStart" styleClass="txtField" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <GridPane.margin>
                         <Insets right="15.0" />
                      </GridPane.margin>
@@ -100,28 +99,29 @@
                         <Insets right="15.0" />
                      </GridPane.margin>
                   </TextField>
-                  <DatePicker fx:id="dateEnd" styleClass="date" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                  <TextField fx:id="txtMax" styleClass="txtField" GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <GridPane.margin>
                         <Insets right="15.0" />
                      </GridPane.margin>
-                  </DatePicker>
-                  <DatePicker fx:id="dateStart" styleClass="date" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  </TextField>
+                  <TextField fx:id="txtPlace" styleClass="txtField" GridPane.columnIndex="3" GridPane.rowIndex="3">
                      <GridPane.margin>
                         <Insets right="15.0" />
                      </GridPane.margin>
-                  </DatePicker>
+                  </TextField>
                   <Label text="Description:" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
                      <GridPane.margin>
                         <Insets right="15.0" />
                      </GridPane.margin>
                   </Label>
-                  <TextField fx:id="txtDescription" styleClass="txtField" GridPane.columnIndex="3">
-                     <GridPane.margin>
-                        <Insets right="15.0" />
-                     </GridPane.margin>
-                  </TextField>
                </children>
             </GridPane>
+            <Button fx:id="btnCreate" layoutX="422.0" layoutY="274.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="137.0" styleClass="btn" text="Create Activity">
+               <font>
+                  <Font name="Consolas" size="12.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnClose" layoutX="23.0" layoutY="274.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="84.0" styleClass="btn" text="Close" />
          </children>
       </Pane>
    </children>
